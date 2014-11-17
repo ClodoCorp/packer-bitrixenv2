@@ -1,0 +1,77 @@
+{
+  "builders": [
+    {
+      "accelerator": "kvm",
+      "boot_command": [
+        "<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort}}/ks6.cfg<enter>"
+      ],
+      "boot_wait": "5s",
+      "disk_interface": "scsi",
+      "disk_size": 5000,
+      "disk_cache": "unsafe",
+      "disk_image": true, 
+      "format": "raw",
+      "headless": true,
+      "http_directory": "http",
+      "iso_checksum_type": "none",
+      "iso_url": "output/bitrixenv-base-x86_64-qemu/bitrixenv-base-x86_64.raw",
+      "net_device": "virtio-net",
+      "output_directory": "output/bitrixenv-5-x86_64-qemu/",
+      "machine_type": "pc-i440fx-1.7",
+      "qemuargs": [
+        [
+          "-m",
+          "1024"
+        ],
+        [
+          "-device",
+          "virtio-scsi-pci,id=scsi0"
+        ],
+        [
+          "-drive",
+          "if=none,cache=unsafe,id=drive0,discard=unmap,file=output/bitrixenv-5-x86_64-qemu/bitrixenv-5-x86_64.raw"
+        ],
+        [
+          "-device",
+          "scsi-hd,bus=scsi0.0,drive=drive0"
+        ],
+        [
+          "-device",
+          "virtio-net,netdev=user.0"
+        ]
+      ],
+      "shutdown_command": "shutdown -h now",
+      "ssh_password": "packer",
+      "ssh_username": "root",
+      "ssh_wait_timeout": "10000s",
+      "type": "qemu",
+      "vm_name": "bitrixenv-5-x86_64"
+    }
+  ],
+  "provisioners": [
+    {
+      "scripts": [
+        "scripts/diskfix.sh",
+        "scripts/bitrixenv.sh"
+      ],
+      "pause_before": "30s",  
+      "type": "shell"
+    },
+    {
+      "scripts": [
+        "scripts/grubfix.sh",
+        "scripts/cloud.sh"
+      ],
+      "type": "shell"
+    }
+  ],
+  "post-processors": [
+    [
+      {
+        "type": "compress",
+        "format": "pgzip",
+        "output": "output/bitrixenv-5-x86_64-compress/"
+      }
+    ]
+  ]
+}
