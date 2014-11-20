@@ -14,7 +14,7 @@
       "iso_checksum_type": "none",
       "iso_url": "output/bitrixenv-base-x86_64-qemu/bitrixenv-base-x86_64.raw",
       "net_device": "virtio-net",
-      "output_directory": "output/bitrixenv-5-x86_64-qemu/",
+      "output_directory": "output/bitrixenv-4-x86_64-qemu/",
       "machine_type": "pc-i440fx-1.7",
       "qemuargs": [
         [
@@ -27,7 +27,7 @@
         ],
         [
           "-drive",
-          "if=none,cache=unsafe,id=drive0,discard=unmap,file=output/bitrixenv-5-x86_64-qemu/bitrixenv-5-x86_64.raw"
+          "if=none,cache=unsafe,id=drive0,discard=unmap,file=output/bitrixenv-4-x86_64-qemu/bitrixenv-4-x86_64.raw"
         ],
         [
           "-device",
@@ -43,7 +43,7 @@
       "ssh_username": "root",
       "ssh_wait_timeout": "10000s",
       "type": "qemu",
-      "vm_name": "bitrixenv-5-x86_64"
+      "vm_name": "bitrixenv-4-x86_64"
     }
   ],
   "provisioners": [
@@ -56,7 +56,7 @@
       "pause_before": "30s",  
       "type": "shell",
       "environment_vars": [
-        "BITRIX_VERSION=5"
+        "BITRIX_VERSION=4"
       ]
     },
     {
@@ -73,7 +73,7 @@
       {
         "type": "compress",
         "format": "pgzip",
-        "output": "output/bitrixenv-5-x86_64-compress/"
+        "output": "output/bitrixenv-4-x86_64-compress/"
       }
     ]
   ]
