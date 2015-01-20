@@ -63,6 +63,7 @@
       "scripts": [
         "scripts/cloud.sh",
         "scripts/cleanup_bitrix.sh",
+        "scripts/cloudinit-config.sh",
         "scripts/grubfix.sh"
       ],
       "type": "shell"
