@@ -61,6 +61,7 @@
         "scripts/prepare_bitrix.sh",
         "scripts/bitrixenv.sh",
         "scripts/cleanup_bitrix.sh",
+        "scripts/cloudinit.sh",
         "scripts/cleanup.sh"
       ],
       "pause_before": "30s",
