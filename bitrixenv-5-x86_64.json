@@ -70,5 +70,15 @@
         "BITRIX_VERSION=5"
       ]
     }
+  ],
+  "post-processors": [
+    [
+      {
+        "type": "compress",
+        "format": "bgzf",
+        "output": "output/bitrixenv-5-x86_64-compress/",
+        "only": ["qemu"]
+      }
+    ]
   ]
 }

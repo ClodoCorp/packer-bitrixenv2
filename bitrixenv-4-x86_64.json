@@ -70,5 +70,15 @@
         "BITRIX_VERSION=4"
       ]
     }
+  ],
+  "post-processors": [
+    [
+      {
+        "type": "compress",
+        "format": "bgzf",
+        "output": "output/bitrixenv-4-x86_64-compress/",
+        "only": ["qemu"]
+      }
+    ]
   ]
 }
