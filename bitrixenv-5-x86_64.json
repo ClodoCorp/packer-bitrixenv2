@@ -2,19 +2,21 @@
   "builders": [
     {
       "accelerator": "kvm",
-      "boot_command": [],
+      "boot_command": [
+        "<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort}}/ks6.cfg<enter>"
+      ],
       "boot_wait": "5s",
       "disk_interface": "scsi",
       "disk_size": 5000,
       "disk_cache": "unsafe",
-      "disk_image": true, 
       "format": "raw",
       "headless": true,
       "http_directory": "http",
-      "iso_checksum_type": "none",
-      "iso_url": "output/bitrixenv-base-x86_64-qemu/bitrixenv-base-x86_64.raw",
+      "iso_checksum": "4ed6c56d365bd3ab12cd88b8a480f4a62e7c66d2",
+      "iso_checksum_type": "sha1",
+      "iso_url": "http://mirror.yandex.ru/centos/6/isos/x86_64/CentOS-6.6-x86_64-minimal.iso",
       "net_device": "virtio-net",
-      "output_directory": "output/bitrixenv-5-x86_64-qemu/",
+      "output_directory": "output/bitrixenv-base-x86_64-qemu/",
       "machine_type": "pc-i440fx-1.7",
       "qemuargs": [
         [
@@ -27,7 +29,7 @@
         ],
         [
           "-drive",
-          "if=none,cache=unsafe,id=drive0,discard=unmap,file=output/bitrixenv-5-x86_64-qemu/bitrixenv-5-x86_64.raw"
+          "if=none,cache=unsafe,id=drive0,discard=unmap,file=output/bitrixenv-base-x86_64-qemu/bitrixenv-base-x86_64.raw"
         ],
         [
           "-device",
@@ -43,39 +45,29 @@
       "ssh_username": "root",
       "ssh_wait_timeout": "10000s",
       "type": "qemu",
-      "vm_name": "bitrixenv-5-x86_64"
+      "vm_name": "bitrixenv-base-x86_64"
     }
   ],
   "provisioners": [
     {
       "scripts": [
-        "scripts/diskfix.sh",
-        "scripts/prepare_bitrix.sh",
-        "scripts/bitrixenv.sh"
+        "scripts/base.sh",
+        "scripts/reboot.sh"
       ],
-      "pause_before": "30s",  
+      "type": "shell"
+    },
+    {
+      "scripts": [
+        "scripts/prepare_bitrix.sh",
+        "scripts/bitrixenv.sh",
+        "scripts/cleanup_bitrix.sh",
+        "scripts/cleanup.sh"
+      ],
+      "pause_before": "30s",
       "type": "shell",
       "environment_vars": [
         "BITRIX_VERSION=5"
       ]
-    },
-    {
-      "scripts": [
-        "scripts/cloud.sh",
-        "scripts/cleanup_bitrix.sh",
-        "scripts/cloudinit-config.sh",
-        "scripts/grubfix.sh"
-      ],
-      "type": "shell"
     }
-  ],
-  "post-processors": [
-    [
-      {
-        "type": "compress",
-        "format": "bgzf",
-        "output": "output/bitrixenv-5-x86_64-compress/"
-      }
-    ]
   ]
 }
