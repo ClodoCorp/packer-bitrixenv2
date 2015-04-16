@@ -16,7 +16,7 @@
       "iso_checksum_type": "sha1",
       "iso_url": "http://mirror.yandex.ru/centos/6/isos/x86_64/CentOS-6.6-x86_64-minimal.iso",
       "net_device": "virtio-net",
-      "output_directory": "output/bitrixenv-base-x86_64-qemu/",
+      "output_directory": "output/bitrixenv-5-x86_64-qemu/",
       "machine_type": "pc-i440fx-1.7",
       "qemuargs": [
         [
@@ -29,7 +29,7 @@
         ],
         [
           "-drive",
-          "if=none,cache=unsafe,id=drive0,discard=unmap,file=output/bitrixenv-base-x86_64-qemu/bitrixenv-base-x86_64.raw"
+          "if=none,cache=unsafe,id=drive0,discard=unmap,file=output/bitrixenv-5-x86_64-qemu/bitrixenv-5-x86_64.raw"
         ],
         [
           "-device",
@@ -45,7 +45,7 @@
       "ssh_username": "root",
       "ssh_wait_timeout": "10000s",
       "type": "qemu",
-      "vm_name": "bitrixenv-base-x86_64"
+      "vm_name": "bitrixenv-5-x86_64"
     }
   ],
   "provisioners": [
