@@ -77,6 +77,10 @@
         "format": "bgzf",
         "output": "output/bitrixenv-4-x86_64-compress/",
         "only": ["qemu"]
+      },
+      {
+        "type": "checksum",
+        "output": "output/bitrixenv-4-x86_64-compress/"
       }
     ]
   ]
