@@ -37,4 +37,4 @@ fi
 
 EOF
 
-chmod +x /home/bitrix/www/bitrix/php_interface/fix.sh
+chmod +x /home/bitrix/www/bitrix/php_interface/bitrixfix.sh
