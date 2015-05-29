@@ -17,24 +17,8 @@ yum -y install incron
 chkconfig incrond on
 
 # Create check
-cat << EOF > /etc/incron.d/bitrixfix
-/home/bitrix/www/bitrix/php_interface/ IN_CREATE /home/bitrix/www/bitrix/php_interface/bitrixfix.sh $@ $#
-EOF
+wget https://cdn.rawgit.com/methodx/b505c0aedff6da681b61/raw/8f4fe0c7047792edde481f33ca461e422b193512/check -O /etc/incron.d/bitrixfix
 
 # Add incron script for fixing after_connect files
-cat << EOF > /home/bitrix/www/bitrix/php_interface/bitrixfix.sh
-#!/bin/bash
-[ "$2" == "after_connect.php" ] && sed -i "s|.*?>.*|\$DB->Query(\"SET LOCAL time_zone='Europe/Moscow'\");\n& |" $1$2 && echo "$2 fixed" > $1log
-[ "$2" == "after_connect_d7.php" ] && sed -i "s|.*?>.*|\$connection->queryExecute(\"SET LOCAL time_zone='Europe/Moscow'\");\n&|" $1$2 $1$2 && echo "$2 fixed" > $1log
-
-num=`cat $1log | wc -l`
-if [ $num == 2 ]; then
-    rm -rf $1log
-    yum -y remove incron
-    rm -f -- "$0"
-    exit 0
-fi
-
-EOF
-
+wget https://cdn.rawgit.com/methodx/85a18377ea196fa548a0/raw/ -O /home/bitrix/www/bitrix/php_interface/bitrixfix.sh
 chmod +x /home/bitrix/www/bitrix/php_interface/bitrixfix.sh
