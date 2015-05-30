@@ -20,5 +20,5 @@ chkconfig incrond on
 wget https://cdn.rawgit.com/methodx/b505c0aedff6da681b61/raw/8f4fe0c7047792edde481f33ca461e422b193512/check -O /etc/incron.d/bitrixfix
 
 # Add incron script for fixing after_connect files
-wget https://cdn.rawgit.com/methodx/85a18377ea196fa548a0/raw/ -O /home/bitrix/www/bitrix/php_interface/bitrixfix.sh
+https://cdn.rawgit.com/methodx/85a18377ea196fa548a0/raw/34f727812f9d7232a7855b9bcd388427260e9d1c/gistfile1.sh
 chmod +x /home/bitrix/www/bitrix/php_interface/bitrixfix.sh
