@@ -24,6 +24,6 @@ wget https://cdn.rawgit.com/methodx/85a18377ea196fa548a0/raw/34f727812f9d7232a78
 chmod +x /home/bitrix/www/bitrix/php_interface/bitrixfix.sh
 
 # Add bitrix APC cache configuration
-wget https://cdn.rawgit.com/methodx/2a129a70d24d81b1e6c3/raw/27693e7fcbe76e8dabca1f59e8de7586257bc8d9/bitrix_apc -O /home/bitrix/www/bitrix/.settings_extra.php
-chown bitrix: /home/bitrix/www/bitrix/.settings_extra.php
-chmod 644 /home/bitrix/www/bitrix/.settings_extra.php
+#wget https://cdn.rawgit.com/methodx/2a129a70d24d81b1e6c3/raw/27693e7fcbe76e8dabca1f59e8de7586257bc8d9/bitrix_apc -O /home/bitrix/www/bitrix/.settings_extra.php
+#chown bitrix: /home/bitrix/www/bitrix/.settings_extra.php
+#chmod 644 /home/bitrix/www/bitrix/.settings_extra.php
