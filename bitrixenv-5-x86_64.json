@@ -53,6 +53,11 @@
       "environment_vars": [
         "BITRIX_VERSION=5"
       ]
+    },
+    {
+      "type": "file",
+      "source": "files/80-hotplug-cpu-mem.rules",
+      "destination": "/etc/udev/rules.d/80-hotplug-cpu-mem.rules"
     }
   ],
   "post-processors": [
